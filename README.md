@@ -21,6 +21,7 @@ Our vision is to create a decentralized and trustless donation ecosystem where u
 - **Low Transaction Fees:** Leveraging blockchain efficiency to minimize processing costs.
 - **Decentralized Identity Verification:** Ensuring authenticity of donation campaigns and recipients through verifiable credentials.
 
----
+## Contract Address
+0xC344410D779Dcb425160AB982D064d2FD86A12b3
 This README provides a high-level overview of the NFT Donation Platform, outlining its purpose, vision, potential advancements, and key functionalities.
 
