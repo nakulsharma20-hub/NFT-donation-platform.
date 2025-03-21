@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NFT Donation Platform</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4/web3.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>NFT Donation Platform</h1>
-        <div class="section">
+        
+        <button class="connect-btn" onclick="connectWallet()">Connect Wallet</button>
+        <p id="walletAddress">Not Connected</p>
+
+        <div class="card">
             <h2>Mint NFT</h2>
             <input type="text" id="recipient" placeholder="Recipient Address">
             <button onclick="mintNFT()">Mint NFT</button>
         </div>
-        <div class="section">
+
+        <div class="card">
             <h2>Donate NFT</h2>
             <input type="number" id="tokenId" placeholder="Token ID">
             <input type="number" id="donationAmount" placeholder="Donation Amount (ETH)">
             <button onclick="donateNFT()">Donate</button>
         </div>
-        <div class="section">
+
+        <div class="card">
             <h2>Check Donations</h2>
             <input type="text" id="checkAddress" placeholder="Your Address">
             <button onclick="checkDonations()">Check</button>
