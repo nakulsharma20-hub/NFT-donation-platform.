@@ -1,4 +1,6 @@
-// script.js
+let web3;
+let contract;
+let userAccount;
 const contractAddress = "0xC344410D779Dcb425160AB982D064d2FD86A12b3";
 const abi = [[
 	{
@@ -260,7 +262,7 @@ const abi = [[
 		"stateMutability": "nonpayable",
 		"type": "function"
 	}
-]
+],
     {
         "constant": false,
         "inputs": [{ "name": "recipient", "type": "address" }],
@@ -289,35 +291,42 @@ const abi = [[
     }
 ];
 
-let web3;
-let contract;
-
 window.onload = async () => {
     if (window.ethereum) {
         web3 = new Web3(window.ethereum);
-        await window.ethereum.request({ method: "eth_requestAccounts" });
-        contract = new web3.eth.Contract(abi, contractAddress);
     } else {
         alert("Please install MetaMask!");
     }
 };
 
+async function connectWallet() {
+    try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        userAccount = accounts[0];
+        document.getElementById("walletAddress").innerText = `Connected: ${userAccount}`;
+        contract = new web3.eth.Contract(abi, contractAddress);
+    } catch (error) {
+        console.error("Wallet connection failed", error);
+    }
+}
+
 async function mintNFT() {
+    if (!userAccount) return alert("Please connect your wallet first!");
     const recipient = document.getElementById("recipient").value;
-    const accounts = await web3.eth.getAccounts();
-    await contract.methods.mintNFT(recipient).send({ from: accounts[0] });
+    await contract.methods.mintNFT(recipient).send({ from: userAccount });
     alert("NFT Minted Successfully");
 }
 
 async function donateNFT() {
+    if (!userAccount) return alert("Please connect your wallet first!");
     const tokenId = document.getElementById("tokenId").value;
     const donationAmount = document.getElementById("donationAmount").value;
-    const accounts = await web3.eth.getAccounts();
-    await contract.methods.donateNFT(tokenId).send({ from: accounts[0], value: web3.utils.toWei(donationAmount, "ether") });
+    await contract.methods.donateNFT(tokenId).send({ from: userAccount, value: web3.utils.toWei(donationAmount, "ether") });
     alert("Donation Successful");
 }
 
 async function checkDonations() {
+    if (!userAccount) return alert("Please connect your wallet first!");
     const address = document.getElementById("checkAddress").value;
     const donation = await contract.methods.getTotalDonations(address).call();
     document.getElementById("donationResult").innerText = `Total Donations: ${web3.utils.fromWei(donation, "ether")} ETH`;
