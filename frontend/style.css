@@ -1,50 +1,182 @@
-/* styles.css */
+/* Base body styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #00041a, #052641); /* Deep, calming gradient */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    color: #fff;
 }
 
+/* Container for all elements */
 .container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    background: rgba(255, 255, 255, 0.12); /* Glassmorphism effect */
+    border-radius: 12px;
+    padding: 40px 32px; /* Added padding for better spacing */
+    width: 450px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     text-align: center;
+    transition: transform 0.3s ease-in-out;
 }
 
+.container:hover {
+    transform: scale(1.02); /* Subtle hover scale for interaction */
+}
+
+/* Header styles */
 h1 {
-    color: #333;
+    margin-bottom: 30px;
+    color: #e3f2fd; /* Light primary color for contrast */
+    font-weight: 600;
+    font-size: 36px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
 }
 
-.section {
-    margin-top: 20px;
-}
-
-input {
-    width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007BFF;
-    color: white;
+/* Connect Wallet Button */
+.connect-btn {
+    background-color: #00aeff; /* Vibrant accent color */
+    color: #fff;
+    padding: 14px 28px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background: #0056b3;
+.connect-btn:hover {
+    background-color: #0288d1; /* Darker accent on hover */
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.connect-btn:active {
+    background-color: #0277bd;
+}
+
+/* Wallet Address Text */
+#walletAddress {
+    margin-bottom: 20px;
+    font-size: 16px;
+    word-break: break-word;
+    color: #bbdefb;
+    word-wrap: break-word;
+}
+
+/* Card Styles */
+.card {
+    background: rgba(255, 255, 255, 0.08); /* Slightly transparent */
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    color: #bbdefb;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+/* Input Fields */
+.card input[type="text"],
+.card input[type="number"] {
+    width: calc(100% - 24px);
+    padding: 14px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 16px;
+}
+
+.card input[type="text"]::placeholder,
+.card input[type="number"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.card input[type="text"]:focus,
+.card input[type="number"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.7);
+}
+
+/* Buttons inside cards */
+.card button {
+    background-color: #183975;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card button:hover {
+    background-color: #02005c;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.card button:active {
+    background-color: #02005c;
+}
+
+/* Donation result styling */
+#donationResult {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #ff8a80; /* Light red for donation results */
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .connect-btn {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    .card button {
+        font-size: 16px;
+    }
 }
