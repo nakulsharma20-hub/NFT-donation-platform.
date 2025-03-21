@@ -24,6 +24,7 @@ Our vision is to create a decentralized and trustless donation ecosystem where u
 ## Contract Address
 0xC344410D779Dcb425160AB982D064d2FD86A12b3
 ![Screenshot (412)](https://github.com/user-attachments/assets/7aedfbde-b7fe-431a-b037-3114843654cf)
+![Screenshot (415)](https://github.com/user-attachments/assets/5d45ecc5-775e-4eb1-97a9-540ff727b6ca)
 
 This README provides a high-level overview of the NFT Donation Platform, outlining its purpose, vision, potential advancements, and key functionalities.
 
